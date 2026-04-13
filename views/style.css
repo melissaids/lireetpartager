@@ -1,0 +1,123 @@
+/* Configuration générale */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Header et Navigation */
+header {
+    background-color: #ffffff;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #003366; /* Un bleu sérieux pour Lire et Partager */
+    font-weight: bold;
+}
+
+/* La carte de connexion (Login Card) */
+.login-card {
+    max-width: 400px;
+    margin: 50px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.logo-large img {
+    width: 150px; /* On réduit la taille du logo ici */
+    margin-bottom: 20px;
+}
+
+/* Formulaire */
+form {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+label {
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+}
+
+input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.btn-primary {
+    background-color: #003366;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.btn-primary:hover {
+    background-color: #0055aa;
+}
+
+/* Footer (Grille) */
+.main-footer {
+    background-color: #003366;
+    color: white;
+    padding: 40px 20px;
+    margin-top: 50px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colonnes comme dans ton HTML */
+    gap: 30px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.footer-brand img {
+    width: 100px;
+    filter: brightness(0) invert(1); /* Rend le logo blanc si besoin */
+}
+
+.footer-nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-nav a {
+    color: #ddd;
+    text-decoration: none;
+    line-height: 2;
+}
+
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-top: 30px;
+    padding-top: 20px;
+    font-size: 0.8rem;
+}
