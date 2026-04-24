@@ -13,14 +13,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->execute([$email]);
         $user = $stmt->fetch();
 
-        // Vérification de l'utilisateur et du mot de passe (haché)
         if ($user && password_verify($password, $user['mot_de_pass'])) {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['nom'] = $user['nom'];
             $_SESSION['prenom'] = $user['prenom'];
             $_SESSION['role'] = $user['role'];
             
-            // On redirige
             header('Location: index.php');
             exit();
         } else {

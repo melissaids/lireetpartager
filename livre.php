@@ -41,7 +41,7 @@ $stmtAvis = $pdo->prepare($sqlAvis);
 $stmtAvis->execute([$id]);
 $avis_liste = $stmtAvis->fetchAll();
 
-$page_title = $livre['titre'] . " - Lire et Partager";
+$page_title = $livre['titre'] ;
 include 'models/header.php';
 ?>
 

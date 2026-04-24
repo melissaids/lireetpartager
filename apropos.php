@@ -25,12 +25,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = "Veuillez remplir tous les champs.";
     }
 }
-$page_title = "À propos - Lire et Partager";
+$page_title = "À propos de nous";
 include 'models/header.php'; 
 ?>
 <main class="content-wrapper">
         <section class="title-section">
-        <h1> A propos de nous </h1>
+        <h1> Notre histoire </h1>
         </section>
         <section class="history-section">
             <h2>L’histoire d’un voyage immobile</h2>

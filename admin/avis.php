@@ -25,32 +25,31 @@ $avis = $pdo->query("
 ")->fetchAll();
 ?>
 
-<div class="container">
+<<div class="container">
     <h1>Modération des avis</h1>
-    <a href="index.php">← Retour</a>
+    <a href="index.php" class="btn btn-bleu">← Retour</a>
 
-    <?php if ($msg): ?><div class="succes" style="margin-top:15px;"><?= $msg ?></div><?php endif; ?>
+    <?php if ($msg): ?><div class="alert alert-success" style="margin-top:15px;"><?= $msg ?></div><?php endif; ?>
 
     <?php foreach ($avis as $a): ?>
-        <div style="background:white; padding:15px; border-radius:8px; border:1px solid #ddd; margin-top:15px;">
-            <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;">
+        <div class="admin-card">
+            <div class="admin-card-header">
                 <div>
-                    <strong><?= htmlspecialchars($a['prenom']) ?></strong>
-                    sur <em><?= htmlspecialchars($a['titre_livre']) ?></em>
+                    <strong><?= htmlspecialchars($a['prenom']) ?></strong> sur <em><?= htmlspecialchars($a['titre_livre']) ?></em>
                     <span class="etoiles"><?= str_repeat('★', (int)$a['note']) ?><?= str_repeat('☆', 5 - (int)$a['note']) ?></span>
                 </div>
-                <?php
-                $couleur = $a['statut'] == 'valide' ? '#27ae60' : ($a['statut'] == 'refuse' ? '#e74c3c' : '#e67e22');
-                ?>
-                <span style="background:<?= $couleur ?>; color:white; padding:3px 10px; border-radius:20px; font-size:12px;"><?= $a['statut'] ?></span>
+                <?php $couleur = $a['statut'] == 'valide' ? '#27ae60' : ($a['statut'] == 'refuse' ? '#e74c3c' : '#e67e22'); ?>
+                <span class="badge" style="background:<?= $couleur ?>; color:white; padding:4px 12px; border-radius:20px; font-size:11px; font-weight:bold;">
+                    <?= strtoupper($a['statut']) ?>
+                </span>
             </div>
-            <p style="margin-top:8px; color:#555;"><?= htmlspecialchars($a['commentaire']) ?></p>
-            <div style="margin-top:10px; display:flex; gap:8px;">
+            <p><?= htmlspecialchars($a['commentaire']) ?></p>
+            <div style="display:flex; gap:10px; margin-top:15px;">
                 <?php if ($a['statut'] != 'valide'): ?>
-                    <a href="avis.php?action=valider&id=<?= $a['id'] ?>" class="btn btn-vert" style="font-size:12px; padding:5px 12px;">Valider</a>
+                    <a href="avis.php?action=valider&id=<?= $a['id'] ?>" class="btn btn-vert">Valider</a>
                 <?php endif; ?>
                 <?php if ($a['statut'] != 'refuse'): ?>
-                    <a href="avis.php?action=refuser&id=<?= $a['id'] ?>" class="btn btn-rouge" style="font-size:12px; padding:5px 12px;">Refuser</a>
+                    <a href="avis.php?action=refuser&id=<?= $a['id'] ?>" class="btn btn-rouge">Refuser</a>
                 <?php endif; ?>
             </div>
         </div>

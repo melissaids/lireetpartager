@@ -4,54 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $page_title ?? 'Lire et Partager'; ?></title>
-<<<<<<< HEAD
-    <link rel="stylesheet" href="views/style.css">
+    <link rel="stylesheet" href="./views/style.css"> 
 </head>
 <body>
-    <header>
-        <div class="header-container">
-            <div class="logo-group">
-                <img src="assets/photo/lplogobleu.png" alt="Logo de Lire et Partager" class="logo-image">
-                <span class="logo-text">Lire et Partager</span>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="logo-container">
+                <img src="./assets/photo/lplogobleu.png" alt="L&P Logo" class="logo-small">
+                <span>Lire et Partager</span>
             </div>
-
-            <nav>
-    <ul>
-        <li><a href="index.php">Accueil</a></li>
-        <li><a href="apropos.php">À propos</a></li>
-        <li><a href="catalogue.php">Catalogue</a></li>
-
-        <?php if (isset($_SESSION['user_id'])): ?>
-            <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
-                <li><a href="admin/index.php">Administration</a></li>
-            <?php endif; ?>
-
-            <li class="user-info">
-                <?php
-                    $prenomAffichage = $_SESSION['prenom'] ?? 'Utilisateur'; 
-                ?>
-                <span>Bonjour, <strong><?php echo htmlspecialchars($prenomAffichage); ?></strong></span>
-            </li>
-            <li><a href="controllers/deconnexion.php" class="btn-nav secondary">Déconnexion</a></li>
-        <?php else: ?>
-            <li><a href="connexion.php" class="btn-nav">Connexion / Inscription</a></li>
-        <?php endif; ?>
-    </ul>
-</nav>
-        </div>
-=======
-    <link rel="stylesheet" href="/views/style.css">
-</head>
-<body>
-    <header>
-        <nav>
-            <div class="logo">L&P Lire et Partager</div>
-            <ul>
-                <li><a href="/index.php">Accueil</a></li>
-                <li><a href="/a-propos.php">À propos</a></li>
-                <li><a href="/catalogue.php">Catalogue</a></li>
-                <li class="btn-connexion">Connexion / Inscription</li>
+            <ul class="nav-links">
+                <li><a href="index.php">Accueil</a></li>
+                <li><a href="apropos.php">À propos</a></li>
+                <li><a href="catalogue.php">Catalogue</a></li>
+                
+                <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
+                    <li><a href="admin_dashboard.php" style="color: #d9534f; font-weight: bold;">Tableau de bord Admin</a></li>
+                <?php endif; ?>
             </ul>
+            
+            <div class="nav-auth">
+                <?php if (isset($_SESSION['user_id'])): ?>
+                    <span style="color: white; margin-right: 10px;">Bonjour, <?php echo htmlspecialchars($_SESSION['prenom'] ?? 'Utilisateur'); ?></span>
+                    <a href="controllers/deconnexion.php" class="btn-outline">Déconnexion</a>
+                <?php else: ?>
+                    <a href="connexion.php" class="btn-outline">Connexion / inscription</a>
+                <?php endif; ?>
+            </div>
         </nav>
->>>>>>> 2dcb82e5f4bfb95db90fd2ea251b790bec4dba7d
+        
+        <div class="hero-title">
+            <h1><?php echo $page_title ?? 'Accueil'; ?></h1>
+        </div>
     </header>

@@ -32,79 +32,9 @@ $tous_les_livres = $stmt->fetchAll();
 $cat_stmt = $pdo->query("SELECT * FROM categories ORDER BY nom ASC");
 $categories = $cat_stmt->fetchAll();
 
-$page_title = "Catalogue complet - Lire et Partager";
+$page_title = "Notre Catalogue";
 include 'models/header.php';
 ?>
-
-<style>
-    .filters-section {
-        background: #f4f7fe;
-        padding: 30px;
-        border-radius: 20px;
-        margin: 20px auto 40px;
-        max-width: 1000px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-    }
-    .search-form {
-        display: flex;
-        gap: 15px;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-    }
-    .search-input, .category-select {
-        border: 2px solid #e0e7ff;
-        padding: 12px 20px;
-        border-radius: 12px;
-        outline: none;
-        font-size: 1rem;
-        transition: all 0.3s ease;
-    }
-    .search-input:focus, .category-select:focus {
-        border-color: #007bff;
-        background: #fff;
-    }
-    .btn-search {
-        background: #007bff;
-        color: white;
-        border: none;
-        padding: 12px 30px;
-        border-radius: 12px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-    .btn-search:hover {
-        background: #0056b3;
-        transform: translateY(-2px);
-    }
-    .btn-reset {
-        color: #ff4757;
-        text-decoration: none;
-        font-weight: bold;
-        padding: 10px;
-    }
-    .results-count {
-        margin-top: 15px;
-        font-size: 0.9rem;
-        color: #667085;
-        font-weight: 500;
-    }
-    .card-meta {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin: 10px 0;
-        font-size: 0.85rem;
-    }
-    .badge-avis {
-        background: #eef4ff;
-        color: #3538cd;
-        padding: 2px 10px;
-        border-radius: 20px;
-        font-weight: 600;
-    }
-</style>
 
 <main class="content-wrapper">
     <h1 class="title-section">Explorez notre collection</h1>
@@ -172,8 +102,8 @@ include 'models/header.php';
                 <?php endforeach; ?>
             <?php else: ?>
                 <div style="text-align: center; width: 100%; padding: 50px;">
-                    <p style="font-size: 1.2rem; color: #666;">Aucun livre ne correspond à votre recherche. 😕</p>
-                    <a href="catalogue.php" style="color: #007bff;">Voir tout le catalogue</a>
+                    <p>Aucun livre ne correspond à votre recherche.</p>
+                    <a href="catalogue.php">Voir tout le catalogue</a>
                 </div>
             <?php endif; ?>
         </div>
