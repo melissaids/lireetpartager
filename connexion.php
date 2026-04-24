@@ -13,8 +13,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->execute([$email]);
         $user = $stmt->fetch();
 
-        if ($user && password_verify($password, $user['mot_de_passe'])) {
-            // On remplit la session
+        // Vérification de l'utilisateur et du mot de passe (haché)
+        if ($user && password_verify($password, $user['mot_de_pass'])) {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['nom'] = $user['nom'];
             $_SESSION['prenom'] = $user['prenom'];
@@ -30,22 +30,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = "Veuillez remplir tous les champs.";
     }
 }
-
-$page_title = "Connexion - Lire et Partager";
-include 'models/header.php'; 
 ?>
 
-<main class="content-wrapper">
-    <h1>Connexion</h1>
-    <section class="login-card">
-    <div class="logo-large">
-        <img src="./assets/photo/lplogobleu.png" alt="L&P Logo">
-    </div>
-        <div class="public-form-container">
-        <h2>Connectez-vous à votre espace :</h2>
-            <?php if ($error): ?>
-                <p style="color: red; font-weight: bold;"><?php echo $error; ?></p>
-            <?php endif; ?>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Connexion - Lire et Partager</title>
+    <link rel="stylesheet" href="style.css"> </head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">L&P Lire et Partager</div>
+            <ul>
+                <li>Accueil</li>
+                <li>À propos</li>
+                <li>Catalogue</li>
+                <li class="btn-connexion">Connexion / Inscription</li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Connexion</h1>
+
+        <section class="login-card">
+            <div class="logo-large">
+                <img src="./assets/photo/lplogobleu.png" alt="L&P Logo">
+            </div>
+
+            <div class="form-container">
+                <h2>Connectez-vous à votre espace :</h2>
+                
+                <?php if ($error): ?>
+                    <p style="color: red;"><?php echo $error; ?></p>
+                <?php endif; ?>
 
             <form method="POST" action="">
                 <label>Adresse mail :</label>
@@ -64,4 +84,8 @@ include 'models/header.php';
     </section>
 </main>
 
-<?php include 'models/footer.php'; ?>
+    <footer>
+        </footer>
+
+</body>
+</html>

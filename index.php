@@ -1,88 +1,95 @@
 <?php
 session_start();
-require_once 'config/db.php';
-$stmt_livres = $pdo->query("SELECT * FROM livres ORDER BY id DESC LIMIT 3");
-$derniers_livres = $stmt_livres->fetchAll();
-$error = null;
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
-    $password = $_POST['password'];
-
-    if (!empty($email) && !empty($password)) {
-        $stmt = $pdo->prepare("SELECT * FROM utilisateurs WHERE email = ?");
-        $stmt->execute([$email]);
-        $user = $stmt->fetch();
-
-        if ($user && password_verify($password, $user['mot_de_pass'])) {
-            $_SESSION['user_id'] = $user['id'];
-            $_SESSION['nom'] = $user['nom'];
-            $_SESSION['role'] = $user['role'];
-            header('Location: index.php');
-            exit();
-        } else {
-            $error = "Identifiants invalides.";
-        }
-    } else {
-        $error = "Veuillez remplir tous les champs.";
-    }
-}
-
-$page_title = "Accueil - Lire et Partager";
-include 'models/header.php';
+require_once 'config/db.php'; 
 ?>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil - Lire et Partager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-<main class="content-wrapper">
-    <section class="title-section">
-        <h1> Accueil </h1>
-    </section>
-    <section class="history-section">
-        <h2>Notre histoire :</h2>
-        <p>
-            <strong>Lire et Partager</strong> est née d'une conviction simple : un livre n'est jamais aussi vivant que 
-            lorsqu'il change de mains.<br> Plus qu'une librairie, nous sommes une escale pour les 
-            rêveurs et les curieux.<br> Ici, nous sélectionnons des ouvrages qui font vibrer, avec une 
-            seule mission : <strong>faites circuler l'imaginaire</strong>. <br> Venez trouver l'histoire qui vous attend, et 
-            préparez-vous à la transmettre.
-        </p>
-        <a href="apropos.php" class="btn-blue-icon">En savoir plus <span class="arrow">→</span></a>
-    </section>
-
-    <section class="arrivals-section">
-        <h2>Nos derniers arrivées :</h2>
-        
-        <div class="cards-container">
-    <?php foreach ($derniers_livres as $livre): ?>
-        <div class="card">
-            <div class="card-image">
-                <?php if (!empty($livre['couverture'])): ?>
-                    <img src="assets/photo/<?php echo htmlspecialchars($livre['couverture']); ?>" alt="Couverture">
-                <?php else: ?>
-                    <img src="assets/photo/lplogobleu.png" alt="Pas de couverture">
-                <?php endif; ?>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="logo-container">
+                <img src="./assets/photo/lplogobleu.png" alt="L&P Logo" class="logo-small">
+                <span>Lire et Partager</span>
             </div>
-            <div class="card-content">
-                <div>
-                    <h3><?php echo htmlspecialchars($livre['titre'] ?? ''); ?></h3>
-                    <p class="author"><?php echo htmlspecialchars($livre['auteur'] ?? ''); ?></p>
-                    <p class="description">
-                        <?php
-                            $texte = $livre['description'] ?? '';
-                            echo htmlspecialchars(substr($texte, 0, 120)) . '...'; 
-                        ?>
-                    </p>
+            <ul class="nav-links">
+                <li><a href="index.php" class="active">Accueil</a></li>
+                <li><a href="a-propos.php">À propos</a></li>
+                <li><a href="catalogue.php">Catalogue</a></li>
+            </ul>
+            <div class="nav-auth">
+                <a href="connexion.php" class="btn-outline">Connexion / inscription</a>
+            </div>
+        </nav>
+        
+        <div class="hero-title">
+            <h1>Accueil</h1>
+        </div>
+    </header>
+
+    <main class="content-wrapper">
+        
+        <section class="history-section">
+            <h2>Notre histoire :</h2>
+            <p>
+                <strong>Lire et Partager</strong> est née d'une conviction simple : un livre n'est jamais aussi vivant que 
+                lorsqu'il change de mains. Plus qu'une librairie, nous sommes une escale pour les 
+                rêveurs et les curieux. Ici, nous sélectionnons des ouvrages qui font vibrer, avec une 
+                seule mission : <strong>faites circuler l'imaginaire</strong>. Venez trouver l'histoire qui vous attend, et 
+                préparez-vous à la transmettre.
+            </p>
+            <a href="a-propos.php" class="btn-blue-icon">En savoir plus <span class="arrow">→</span></a>
+        </section>
+
+        <section class="arrivals-section">
+            <h2>Nos derniers arrivées :</h2>
+            
+            <div class="cards-container">
+                
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <img src="./assets/photo/lplogobleu.png" alt="L&P Logo Large">
+                <p>Faites circuler l'imaginaire</p>
+            </div>
+            
+            <div class="footer-nav">
+                <h3>Plan du site :</h3>
+                <div class="nav-lists">
+                    <ul>
+                        <li><a href="connexion.php">Connexion</a></li>
+                        <li><a href="inscription.php">Inscription</a></li>
+                        <li><a href="mentions.php">Mention légale</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="index.php">Accueil</a></li>
+                        <li><a href="a-propos.php">À propos</a></li>
+                        <li><a href="catalogue.php">Catalogue</a></li>
+                    </ul>
                 </div>
-                <a href="livre.php?id=<?php echo $livre['id']; ?>" class="btn-blue-icon">
-                    En savoir plus <span class="arrow">→</span>
-                </a>
+            </div>
+
+            <div class="footer-contact">
+                <p><strong>Nous trouver :</strong><br>12, Rue des Enluminures<br>75005 Paris</p>
+                <p><strong>Nous contacter :</strong><br>01 42 33 45 67<br>contact@lireetpartager.fr</p>
+                <p><strong>Horaires :</strong><br>Lundi : 10h - 20h<br>Mardi - Samedi : 10h - 19h</p>
             </div>
         </div>
-    <?php endforeach; ?>
-</div>
-    </section>
+        <div class="footer-bottom">
+            <p>© 2026 - Lire et partager, librairie indépendante</p>
+        </div>
+    </footer>
 
-</main>
-
-<?php
-include 'models/footer.php'; 
-?>
+</body>
+</html>
