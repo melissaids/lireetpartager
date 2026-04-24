@@ -2,8 +2,10 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-if (!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'admin') {
-    header('Location: /lire-et-partager/connexion.php');
+
+// Correction ici : on vérifie directement $_SESSION['role']
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+    header('Location: /lireetpartager/connexion.php');
     exit;
 }
 ?>
@@ -12,11 +14,15 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'admin') {
 <head>
     <meta charset="UTF-8">
     <title>Admin — Lire et Partager</title>
-    <link rel="stylesheet" href="/lire-et-partager/assets/style.css">
+    <link rel="stylesheet" href="../views/style.css">
 </head>
 <body>
-<nav>
-    <a href="/lire-et-partager/index.php" class="logo">Lire et Partager</a>
+    <header class="header-admin">
+    <div class="logo-group">
+                <img src="../assets/photo/lplogobleu.png" alt="Logo de Lire et Partager" class="logo-image">
+                <span class="logo-text">Lire et Partager</span>
+    </div>
+<nav class="navigation-admin">
     <ul>
         <li><a href="index.php">Tableau de bord</a></li>
         <li><a href="livres.php">Livres</a></li>
@@ -24,6 +30,8 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] != 'admin') {
         <li><a href="avis.php">Avis</a></li>
         <li><a href="suggestions.php">Suggestions</a></li>
         <li><a href="utilisateurs.php">Utilisateurs</a></li>
-        <li><a href="/lire-et-partager/deconnexion.php">Déconnexion</a></li>
+        <li><a href="../index.php">Accueil publique</a></li>
+        <li><a href="../controllers/deconnexion.php">Déconnexion</a></li>
     </ul>
 </nav>
+    </header>

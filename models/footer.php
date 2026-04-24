@@ -2,7 +2,7 @@
         <div class="footer-grid">
             <!-- Logo & slogan -->
             <div class="footer-brand">
-                <img src="../assets/photo/lplogobleu.png" alt="L&P Logo Large">
+                <img src="./assets/photo/lplogobleu.png" alt="L&P Logo Large">
                 <p>Faites circuler l'imaginaire</p>
             </div>
             
