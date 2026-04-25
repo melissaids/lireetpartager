@@ -3,7 +3,6 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-// Correction ici : on vérifie directement $_SESSION['role']
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     header('Location: /lireetpartager/connexion.php');
     exit;

@@ -38,8 +38,6 @@ $page_title = "Inscription";
 include 'models/header.php';
 ?>
     <main>
-        <h1>Inscription</h1>
-
         <section class="login-card">
             <div class="logo-large">
                 <img src="./assets/photo/lplogobleu.png" alt="L&P Logo">

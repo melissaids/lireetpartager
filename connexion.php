@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->execute([$email]);
         $user = $stmt->fetch();
 
-        if ($user && password_verify($password, $user['mot_de_pass'])) {
+        if ($user && password_verify($password, $user['mot_de_passe'])) {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['nom'] = $user['nom'];
             $_SESSION['prenom'] = $user['prenom'];
@@ -32,8 +32,6 @@ $page_title = "Connexion";
 include 'models/header.php';
 ?>
     <main>
-        <h1>Connexion</h1>
-
         <section class="login-card">
             <div class="logo-large">
                 <img src="./assets/photo/lplogobleu.png" alt="L&P Logo">
@@ -54,7 +52,6 @@ include 'models/header.php';
                 <input type="password" name="password" placeholder="Mot de passe" required>
 
                 <div class="actions">
-                    <a href="#">Mot de passe oublié ?</a>
                     <button type="submit" class="btn-primary">Connexion</button>
                     <a href="inscription.php" class="btn-secondary">Inscription</a>
                 </div>

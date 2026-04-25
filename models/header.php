@@ -19,13 +19,14 @@
                 <li><a href="catalogue.php">Catalogue</a></li>
                 
                 <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
-                    <li><a href="admin_dashboard.php" style="color: #d9534f; font-weight: bold;">Tableau de bord Admin</a></li>
+                    <li><a href="./admin/index.php" class="nav-adminlink">Tableau de bord Admin</a></li>
                 <?php endif; ?>
             </ul>
             
             <div class="nav-auth">
                 <?php if (isset($_SESSION['user_id'])): ?>
                     <span style="color: white; margin-right: 10px;">Bonjour, <?php echo htmlspecialchars($_SESSION['prenom'] ?? 'Utilisateur'); ?></span>
+                    <a href="suggestion.php" class="btn-outline">Suggestion</a>
                     <a href="controllers/deconnexion.php" class="btn-outline">Déconnexion</a>
                 <?php else: ?>
                     <a href="connexion.php" class="btn-outline">Connexion / inscription</a>

@@ -35,7 +35,7 @@ if (!$livre) {
 
 $sqlAvis = "SELECT a.*, u.prenom FROM avis a 
             JOIN utilisateurs u ON a.id_utilisateur = u.id 
-            WHERE a.id_livre = ? AND a.statut = 'accepte' 
+            WHERE a.id_livre = ? AND a.statut = 'valide' 
             ORDER BY a.date_avis DESC";
 $stmtAvis = $pdo->prepare($sqlAvis);
 $stmtAvis->execute([$id]);
@@ -56,7 +56,7 @@ include 'models/header.php';
         </div>
 
         <div class="book-info">
-            <p><?= htmlspecialchars($livre['categorie_nom'] ?? 'Général') ?></p>
+            <p class="badge-categorie"><?= htmlspecialchars($livre['categorie_nom'] ?? 'Général') ?></p>
             <h1><?= htmlspecialchars($livre['titre']) ?></h1>
             <p>Par <strong><?= htmlspecialchars($livre['auteur']) ?></strong></p>
             <p><?= number_format($livre['prix'], 2, ',', ' ') ?> €</p>
@@ -72,6 +72,7 @@ include 'models/header.php';
             
             <h3>Résumé</h3>
             <p><?= nl2br(htmlspecialchars($livre['description'])) ?></p>
+            <a href="catalogue.php" class="btn-blue-icon">Retour au catalogue</a>
         </div>
     </section>
 

@@ -29,9 +29,6 @@ $page_title = "À propos de nous";
 include 'models/header.php'; 
 ?>
 <main class="content-wrapper">
-        <section class="title-section">
-        <h1> Notre histoire </h1>
-        </section>
         <section class="history-section">
             <h2>L’histoire d’un voyage immobile</h2>
             <p>
