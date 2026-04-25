@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = "Veuillez remplir tous les champs.";
     }
 }
-$page_title = "Inscription - Lire et Partager";
+$page_title = "Inscription";
 include 'models/header.php';
 ?>
     <main>

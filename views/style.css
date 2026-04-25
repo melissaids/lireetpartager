@@ -1,12 +1,8 @@
 :root {
-    --bleu-header: #1b4965;
-    --bleu-bouton: #133347;
-    --beige-footer: #f2e8d5;
-    --texte-clair: #dadada;
-    --texte-sombre: #1b4965;
-    --fond-sombre: #232323;
-    --succes: #27ae60;
-    --danger: #e74c3c;
+    --bleu-fond: #1b4965;
+    --beige-clair: #f2e8d5;
+    --bleu-texte: #133347;
+    --radius: 40px;
 }
 
 * {
@@ -16,7 +12,7 @@
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
-    background-color: var(--fond-sombre);
+    background-color: #1a1a1a;
     background-image: url('../assets/photo/fondbleu.png');
     background-attachment: fixed;
     color: white;
@@ -27,7 +23,7 @@ body {
 
 .main-header {
     padding: 30px 8%;
-    background: var(--bleu-header);
+    background: transparent;
 }
 
 .navbar {
@@ -150,7 +146,7 @@ body {
 }
 
 .btn-blue-icon {
-    background-color: var(--bleu-bouton);
+    background-color: #234d65;
     color: white;
     padding: 10px 25px;
     border-radius: 20px;
@@ -160,8 +156,8 @@ body {
 }
 
 .main-footer {
-    background-color: var(--beige-footer);
-    color: var(--bleu-bouton);
+    background-color: var(--beige-clair);
+    color: var(--bleu-texte);
     padding: 60px 8% 20px;
     border-radius: 40px 40px 0 0;
     margin-top: 80px;
@@ -171,10 +167,6 @@ body {
     display: grid;
     grid-template-columns: 1fr 1.5fr 1fr;
     gap: 50px;
-}
-
-.footer-brand img {
-    width: 150px;
 }
 
 .nav-lists {
@@ -194,11 +186,90 @@ body {
     line-height: 2.5;
 }
 
-.footer-bottom {
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 5%;
+}
+
+.login-card {
+    background-color: var(--beige-clair);
+    color: var(--bleu-texte);
+    border-radius: var(--radius);
+    padding: 60px;
+    max-width: 900px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+}
+
+.logo-large {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.logo-large img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+}
+
+.form-container {
+    flex: 1.2;
+}
+
+.form-container h2 {
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-size: 1.5rem;
+}
+
+.form-container label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.form-container input {
+    width: 100%;
+    padding: 12px 20px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    background-color: white;
+    font-size: 1rem;
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.btn-primary {
+    background-color: var(--bleu-fond);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1rem;
     text-align: center;
-    margin-top: 40px;
-    border-top: 1px solid rgba(0,0,0,0.1);
-    padding-top: 20px;
+    text-decoration: none;
+}
+
+.btn-secondary {
+    text-align: center;
+    color: var(--bleu-fond);
+    text-decoration: underline;
     font-size: 0.9rem;
 }
 

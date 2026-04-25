@@ -28,28 +28,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = "Veuillez remplir tous les champs.";
     }
 }
+$page_title = "Connexion";
+include 'models/header.php';
 ?>
-
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Connexion - Lire et Partager</title>
-    <link rel="stylesheet" href="style.css"> </head>
-<body>
-
-    <header>
-        <nav>
-            <div class="logo">L&P Lire et Partager</div>
-            <ul>
-                <li>Accueil</li>
-                <li>À propos</li>
-                <li>Catalogue</li>
-                <li class="btn-connexion">Connexion / Inscription</li>
-            </ul>
-        </nav>
-    </header>
-
     <main>
         <h1>Connexion</h1>
 
@@ -81,9 +62,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </section>
 </main>
-
-    <footer>
-        </footer>
-
-</body>
-</html>
+<?php include 'models/footer.php'; ?>
