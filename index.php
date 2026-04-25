@@ -12,7 +12,7 @@ include 'models/header.php';
 <main class="content-wrapper">
     <section class="history-section">
         <h2>Notre histoire :</h2>
-        <p>Lire et Partager a vu le jour sur une étagère trop pleine...</p>
+        <p>Lire et Partager a vu le jour sur une étagère trop pleine et une envie de partage...</p>
         <a href="apropos.php" class="btn-blue-icon">En savoir plus sur nous</a>
     </section>
 

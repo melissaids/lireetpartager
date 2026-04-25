@@ -32,8 +32,7 @@
                 <?php endif; ?>
             </div>
         </nav>
-        
+    </header>   
         <div class="hero-title">
             <h1><?php echo $page_title ?? 'Accueil'; ?></h1>
         </div>
-    </header>
