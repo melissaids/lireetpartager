@@ -61,23 +61,23 @@ if (isset($_GET['modifier'])) {
     <?php if ($msg): ?><div class="succes" style="margin-top:15px;"><?= $msg ?></div><?php endif; ?>
     <?php if ($err): ?><div class="erreur" style="margin-top:15px;"><?= $err ?></div><?php endif; ?>
 
-    <h2 style="margin-top:20px;"><?= $modifier ? 'Modifier' : 'Ajouter une catégorie' ?></h2>
-    <form method="POST" style="max-width:400px;">
+    <h2 class="admin-page-categorieh2"><?= $modifier ? 'Modifier' : 'Ajouter une catégorie' ?></h2>
+    <form method="POST" class="admin-page-categorieh2">
         <input type="hidden" name="action" value="<?= $modifier ? 'modifier' : 'ajouter' ?>">
         <?php if ($modifier): ?>
             <input type="hidden" name="id" value="<?= $modifier['id'] ?>">
         <?php endif; ?>
         <label>Nom</label>
         <input type="text" name="nom" value="<?= htmlspecialchars($modifier['nom'] ?? '') ?>">
-        <div style="display:flex; gap:10px;">
+        <div>
             <button type="submit" class="btn btn-bleu"><?= $modifier ? 'Enregistrer' : 'Ajouter' ?></button>
             <?php if ($modifier): ?>
-                <a href="categories.php" class="btn" style="background:#eee; color:#333;">Annuler</a>
+                <a href="categories.php" class="btn">Annuler</a>
             <?php endif; ?>
         </div>
     </form>
 
-    <h2 style="margin-top:30px;">Liste</h2>
+    <h2>Liste</h2>
     <table>
         <tr>
             <th>Nom</th><th>Nb livres</th><th>Actions</th>
@@ -86,9 +86,9 @@ if (isset($_GET['modifier'])) {
         <tr>
             <td><?= htmlspecialchars($c['nom']) ?></td>
             <td><?= $c['nb'] ?></td>
-            <td style="display:flex; gap:6px;">
-                <a href="categories.php?modifier=<?= $c['id'] ?>" class="btn btn-vert" style="font-size:12px; padding:5px 10px;">Modifier</a>
-                <a href="categories.php?supprimer=<?= $c['id'] ?>" class="btn btn-rouge" style="font-size:12px; padding:5px 10px;" onclick="return confirm('Supprimer ?')">Supprimer</a>
+            <td>
+                <a href="categories.php?modifier=<?= $c['id'] ?>" class="btn btn-vert">Modifier</a>
+                <a href="categories.php?supprimer=<?= $c['id'] ?>" class="btn btn-rouge" onclick="return confirm('Supprimer ?')">Supprimer</a>
             </td>
         </tr>
         <?php endforeach; ?>

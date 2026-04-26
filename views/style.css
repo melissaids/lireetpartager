@@ -700,9 +700,22 @@ tr:hover { background: rgba(27, 73, 101, 0.05); }
     padding-bottom: 10px;
     margin-bottom: 10px;
 }
-
+.admin-page-header {
+    font-size: 2.5rem;
+    color: var(--texte-clair);
+    margin: 40px 0 20px 0;
+    text-align: center;
+}
+.admin-form-section {
+    background: var(--beige-footer);
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 40px;
+    color: var(--texte-sombre);
+    max-width: 90%;
+}
 .admin-form {
-    background: #f2e8d5;
+    background: var(--fond-clair);
     padding: 25px;
     border-radius: 15px;
     display: grid;
@@ -718,4 +731,82 @@ tr:hover { background: rgba(27, 73, 101, 0.05); }
     border: 1px solid #ccc;
 }
 
+.admin-form img, .admin-table img {
+    max-width: 60%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
 .full-width { grid-column: span 2; }
+
+.btn-back {
+    color: var(--texte-clair);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    transition: 0.3s;
+}
+
+.btn-back:hover {
+    text-decoration: underline;
+    transform: translateX(-5px);
+}
+
+.admin-page-categorieh2 {
+    background: var(--beige-footer);
+    padding: 25px;
+    border-radius: 15px;
+    color: var(--texte-sombre);
+    margin-bottom: 20px;
+}
+
+form.admin-page-categorieh2 {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 500px;
+}
+
+form.admin-page-categorieh2 label {
+    font-weight: bold;
+}
+
+form.admin-page-categorieh2 input[type="text"] {
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    background: white;
+    font-size: 1rem;
+}
+
+form.admin-page-categorieh2 div {
+    display: flex;
+    gap: 10px;
+}
+
+.succes {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #c3e6cb;
+    margin-bottom: 20px;
+}
+
+.erreur {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #f5c6cb;
+    margin-bottom: 20px;
+}
+
+.container > a[href="index.php"] {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: var(--texte-clair);
+    text-decoration: none;
+    font-weight: bold;
+}
