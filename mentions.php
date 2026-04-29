@@ -1,5 +1,7 @@
 <?php
+// Initialise ou récupère la session utilisateur
 session_start();
+// Défini le titre de la page
 $page_title = "Mentions Légales";
 include 'models/header.php';
 ?>
