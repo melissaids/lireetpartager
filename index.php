@@ -1,5 +1,7 @@
 <?php
+// Initialisation ou récuperation d la session d'utilisateur
 session_start();
+// Récuperation de la configuration de la base de donnée
 require_once 'config/db.php'; 
 ?>
 <!DOCTYPE html>
