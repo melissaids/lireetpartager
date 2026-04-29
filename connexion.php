@@ -1,4 +1,5 @@
 <?php
+// initialisation ou démarrage de la session d'utilisateur
 session_start();
 require_once 'config/db.php';
 
