@@ -1,5 +1,6 @@
 <?php
 require_once 'header.php';
+// Initialise ou récupère la session utilisateur
 require_once '../config/db.php';
 
 $users = $pdo->query("SELECT * FROM utilisateurs ORDER BY date_inscription DESC")->fetchAll();

@@ -1,6 +1,7 @@
 <?php
 // Initialise ou récupère la session utilisateur
 session_start();
+// Récuperation de la connexion à la base de données
 require_once 'config/db.php';
 // Change le nom de la page 
 $page_title = "Suggérer un livre";

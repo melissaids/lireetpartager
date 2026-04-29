@@ -1,3 +1,5 @@
+/* Fichier CSS principal pour le projet "Lire et Partager" */
+/* Définition des couleur et des variables globales pour une maintenance facile et une cohérence visuelle */
 :root { 
     --bleu-header: #1b4965; 
     --bleu-bouton: #133347; 

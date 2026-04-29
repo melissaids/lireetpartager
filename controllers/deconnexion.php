@@ -1,4 +1,5 @@
 <?php
+// Initialise ou récupère la session utilisateur
 session_start();
 
 $_SESSION = array();

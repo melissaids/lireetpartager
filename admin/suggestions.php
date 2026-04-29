@@ -1,7 +1,8 @@
 <?php
 require_once 'header.php';
+// Initialise ou récupère la session utilisateur
 require_once '../config/db.php';
-
+// Stockage des messages d'erreur ou de reussite
 $msg = '';
 
 if (isset($_GET['action']) && isset($_GET['id'])) {

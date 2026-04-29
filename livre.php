@@ -1,5 +1,5 @@
 <?php
-// Demarrag ou recuperation de la session de l'utilisateur
+// Initialise ou récupère la session utilisateur
 session_start();
 
 // Connexion à la base de données

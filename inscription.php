@@ -1,4 +1,5 @@
 <?php
+// Initialise ou récupère la session utilisateur
 session_start();
 require_once 'config/db.php';
 $error = null;
