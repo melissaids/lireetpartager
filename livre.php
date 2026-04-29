@@ -1,26 +1,36 @@
 <?php
+// Demarrag ou recuperation de la session de l'utilisateur
 session_start();
+
+// Connexion à la base de données
 require_once 'config/db.php';
 
+// Récupération de l'identifiant du livre via l'URL (ex: detail.php?id=12)
 $id = $_GET['id'] ?? null;
 
+// Si aucun ID n'est fourni, on redirige vers le catalogue pour éviter une erreur
 if (!$id) {
     header('Location: catalogue.php');
     exit;
 }
 
+/* Formulaire d'avis - Traitement */
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_avis']) && isset($_SESSION['user_id'])) {
     $note = intval($_POST['note']);
     $commentaire = trim($_POST['commentaire']);
     $id_user = $_SESSION['user_id'];
 
+    // Validation des données : commentaire non vide et note entre 1 et 5
     if (!empty($commentaire) && $note >= 1 && $note <= 5) {
+        // Insertion de l'avis avec un statut 'en_attente' pour modération
         $stmt = $pdo->prepare("INSERT INTO avis (id_utilisateur, id_livre, note, commentaire, statut) VALUES (?, ?, ?, ?, 'en_attente')");
         $stmt->execute([$id_user, $id, $note, $commentaire]);
         $message_avis = "Merci ! Votre avis est en attente de validation.";
     }
 }
 
+/* Infos du livre - Récuperation = */
+// On utilise une jointure (LEFT JOIN) pour récupérer aussi le nom de la catégorie
 $sqlLivre = "SELECT l.*, c.nom as categorie_nom 
              FROM livres l 
              LEFT JOIN categories c ON l.id_categorie = c.id 
@@ -29,10 +39,13 @@ $stmtLivre = $pdo->prepare($sqlLivre);
 $stmtLivre->execute([$id]);
 $livre = $stmtLivre->fetch();
 
+// Si l'ID dans l'URL ne correspond à aucun livre en base
 if (!$livre) {
     die("Ce livre n'existe pas.");
 }
 
+/* Avis validés - Récuperation */
+// On récupère le prénom de l'utilisateur qui a laissé l'avis via une jointure
 $sqlAvis = "SELECT a.*, u.prenom FROM avis a 
             JOIN utilisateurs u ON a.id_utilisateur = u.id 
             WHERE a.id_livre = ? AND a.statut = 'valide' 
@@ -41,6 +54,7 @@ $stmtAvis = $pdo->prepare($sqlAvis);
 $stmtAvis->execute([$id]);
 $avis_liste = $stmtAvis->fetchAll();
 
+// Définition du titre de la page dynamiquement
 $page_title = $livre['titre'] ;
 include 'models/header.php';
 ?>
@@ -64,9 +78,9 @@ include 'models/header.php';
             <p>
                 Statut : 
                 <?php if (isset($livre['stock']) && $livre['stock'] > 0): ?>
-                    <span>En stock (<?= $livre['stock'] ?>)</span>
+                    <span class="stock-ok">En stock (<?= $livre['stock'] ?>)</span>
                 <?php else: ?>
-                    <span>Indisponible</span>
+                    <span class="stock-none">Indisponible</span>
                 <?php endif; ?>
             </p>
             
@@ -82,10 +96,10 @@ include 'models/header.php';
         <h2>Avis des lecteurs (<?= count($avis_liste) ?>)</h2>
 
         <?php if (isset($message_avis)): ?>
-            <p><?= $message_avis ?></p>
+            <div class="alert-success"><?= $message_avis ?></div>
         <?php endif; ?>
 
-        <div>
+        <div class="add-review">
             <?php if (isset($_SESSION['user_id'])): ?>
                 <h3>Partagez votre avis</h3>
                 <form method="POST" action="">
@@ -99,9 +113,9 @@ include 'models/header.php';
                     </select>
 
                     <label>Commentaire :</label>
-                    <textarea name="commentaire" required></textarea>
+                    <textarea name="commentaire" required placeholder="Ce que vous avez pensé du livre..."></textarea>
 
-                    <button type="submit" name="submit_avis">Publier mon avis</button>
+                    <button type="submit" name="submit_avis" class="btn-submit">Publier mon avis</button>
                 </form>
             <?php else: ?>
                 <p>Vous devez être <a href="connexion.php">connecté</a> pour laisser un avis.</p>
