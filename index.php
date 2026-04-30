@@ -6,6 +6,7 @@ require_once 'config/db.php';
 // On récupère les 3 derniers livres ajoutés
 $stmt = $pdo->query("SELECT id, titre, auteur, couverture FROM livres ORDER BY id DESC LIMIT 3");
 $derniers_livres = $stmt->fetchAll();
+// définition du titre de la page et recuperation du modele header
 $page_title = "Accueil";
 include 'models/header.php';
 ?>

@@ -61,7 +61,6 @@ include 'models/header.php';
 
 <main class="content-wrapper">
     <section class="book-details">
-        /* Si la couverure du livre est renseignée, on l'affiche, sinon une image par défaut */
         <div class="book-image">
             <?php if (!empty($livre['couverture'])): ?>
                 <img src="assets/photo/<?= htmlspecialchars($livre['couverture']) ?>" alt="Couverture">
@@ -69,13 +68,11 @@ include 'models/header.php';
                 <img src="assets/photo/lplogobleu.png" alt="Image par défaut">
             <?php endif; ?>
         </div>
-            // Affichage des informations du livre
         <div class="book-info">
             <p class="badge-categorie"><?= htmlspecialchars($livre['categorie_nom'] ?? 'Général') ?></p>
             <h1><?= htmlspecialchars($livre['titre']) ?></h1>
             <p>Par <strong><?= htmlspecialchars($livre['auteur']) ?></strong></p>
             <p><?= number_format($livre['prix'], 2, ',', ' ') ?> €</p>
-                // Affichage du statut de disponibilité du livre
             <p>
                 Statut : 
                 <?php if (isset($livre['stock']) && $livre['stock'] > 0): ?>
@@ -84,7 +81,6 @@ include 'models/header.php';
                     <span class="stock-none">Indisponible</span>
                 <?php endif; ?>
             </p>
-                // Affichage du résumé du livre avec des sauts de ligne convertis en <br> et des caractères spéciaux échappés pour la sécurité
             <h3>Résumé</h3>
             <p><?= nl2br(htmlspecialchars($livre['description'])) ?></p>
             <a href="catalogue.php" class="btn-blue-icon">Retour au catalogue</a>
@@ -92,14 +88,11 @@ include 'models/header.php';
     </section>
 
     <hr>
-                    // Section des avis des lecteurs
     <section class="reviews">
         <h2>Avis des lecteurs (<?= count($avis_liste) ?>)</h2>
-                    // Affichage d'un message de confirmation après la soumission d'un avis
         <?php if (isset($message_avis)): ?>
             <div class="alert-success"><?= $message_avis ?></div>
         <?php endif; ?>
-                    // Formulaire d'ajout d'avis, visible uniquement pour les utilisateurs connectés
         <div class="add-review">
             <?php if (isset($_SESSION['user_id'])): ?>
                 <h3>Partagez votre avis</h3>

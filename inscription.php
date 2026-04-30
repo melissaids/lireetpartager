@@ -1,15 +1,18 @@
 <?php
 // Initialise ou récupère la session utilisateur
 session_start();
+// Récuperation de la configuration de la base de données
 require_once 'config/db.php';
+// Si le message d'erreur est défini, l'afficher
 $error = null;
+// Traitement du formulaire d'inscription
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nom = trim($_POST['nom']);
     $prenom = trim($_POST['prenom']);
     $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
     $password = $_POST['password'];
     $confirm_password = $_POST['confirm_password'];
-
+    // Verification des champs si ils ne sont pas vide et si les mots de passe correspondent
     if (!empty($nom) && !empty($prenom) && !empty($email) && !empty($password) && !empty($confirm_password)) {
         if ($password === $confirm_password) {
             $stmt = $pdo->prepare("SELECT * FROM utilisateurs WHERE email = ?");
@@ -35,6 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = "Veuillez remplir tous les champs.";
     }
 }
+// Définition du titre de la page et inclusion de l'en-tête
 $page_title = "Inscription";
 include 'models/header.php';
 ?>
