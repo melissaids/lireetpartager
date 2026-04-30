@@ -4,7 +4,7 @@ require_once 'header.php';
 require_once '../config/db.php';
 // Stockage des messages d'erreur ou de reussite
 $msg = '';
-
+// Traitement de la validation ou du refus d'un avis
 if (isset($_GET['action']) && isset($_GET['id'])) {
     $id = intval($_GET['id']);
     if ($_GET['action'] == 'valider') {
@@ -16,7 +16,7 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
         $msg = "Avis refusé.";
     }
 }
-
+// Récupération de tous les avis avec le titre du livre et le prénom de l'utilisateur pour affichage
 $avis = $pdo->query("
     SELECT avis.*, livres.titre AS titre_livre, utilisateurs.prenom
     FROM avis

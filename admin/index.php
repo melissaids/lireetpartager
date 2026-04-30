@@ -1,15 +1,15 @@
 <?php
 // Initialise ou récupère la session utilisateur
 session_start();
-
+// Vérification que l'utilisateur est connecté et a le rôle d'administrateur
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     header('Location: ../index.php');
     exit();
 }
-
+// Récupération de la configuration de la base de donnée & du modele header administrateur
 require_once 'header.php';
 require_once '../config/db.php';
-
+// Récupération des statistiques globales pour affichage sur le tableau de bord
 $nb_livres       = $pdo->query("SELECT COUNT(*) FROM livres")->fetchColumn();
 $nb_avis         = $pdo->query("SELECT COUNT(*) FROM avis WHERE statut = 'en_attente'")->fetchColumn();
 $nb_suggestions  = $pdo->query("SELECT COUNT(*) FROM suggestions WHERE statut = 'en_attente'")->fetchColumn();

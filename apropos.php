@@ -1,10 +1,11 @@
 <?php
 // Initialise ou récupère la session utilisateur
 session_start();
+// Récuperation de la configuration de la base de donnée
 require_once 'config/db.php';
 
 $error = null;
-
+// Si le formulaire de connexion est soumis, on traite les données
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
     $password = $_POST['password'];
@@ -26,6 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = "Veuillez remplir tous les champs.";
     }
 }
+// Définition du titre de la page et récupération du modèle header
 $page_title = "À propos de nous";
 include 'models/header.php'; 
 ?>

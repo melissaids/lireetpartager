@@ -4,7 +4,7 @@ require_once 'header.php';
 require_once '../config/db.php';
 // Stockage des messages d'erreur ou de reussite
 $msg = '';
-
+// Traitement des actions d'acceptation ou de refus de suggestion
 if (isset($_GET['action']) && isset($_GET['id'])) {
     $id = intval($_GET['id']);
     if ($_GET['action'] == 'accepter') {
@@ -16,7 +16,7 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
         $msg = "Suggestion refusée.";
     }
 }
-
+// Récupération de toutes les suggestions avec le prénom de l'utilisateur pour affichage
 $suggestions = $pdo->query("
     SELECT suggestions.*, utilisateurs.prenom
     FROM suggestions

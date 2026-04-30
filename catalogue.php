@@ -1,8 +1,9 @@
 <?php
 // Initialise ou récupère la session utilisateur
 session_start();
+// recuperation de la configuration de la base de donnée
 require_once 'config/db.php';
-
+// Définition de la recherche et du filtre de catégorie
 $search = $_GET['search'] ?? '';
 $category_id = $_GET['category'] ?? '';
 
@@ -32,7 +33,7 @@ $tous_les_livres = $stmt->fetchAll();
 
 $cat_stmt = $pdo->query("SELECT * FROM categories ORDER BY nom ASC");
 $categories = $cat_stmt->fetchAll();
-
+// définition du titre de la page et récupération du modèle header
 $page_title = "Notre Catalogue";
 include 'models/header.php';
 ?>

@@ -5,7 +5,7 @@ require_once '../config/db.php';
 // Stockage des messages d'erreur ou de reussite
 $msg = '';
 $err = '';
-
+// Traitement de la suppression d'une catégorie
 if (isset($_GET['supprimer'])) {
     $id = intval($_GET['supprimer']);
     $check = $pdo->prepare("SELECT COUNT(*) FROM livres WHERE id_categorie = ?");
@@ -17,7 +17,7 @@ if (isset($_GET['supprimer'])) {
         $msg = "Catégorie supprimée.";
     }
 }
-
+// traitement de l'ajout ou de la modification d'une catégorie
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['action'] == 'ajouter') {
     $nom = trim($_POST['nom']);
     if ($nom == '') {
@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['action'] == 'ajouter') {
         $msg = "Catégorie ajoutée.";
     }
 }
-
+// traitement de la modification d'une catégorie
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['action'] == 'modifier') {
     $id  = intval($_POST['id']);
     $nom = trim($_POST['nom']);
@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['action'] == 'modifier') {
         $msg = "Catégorie modifiée.";
     }
 }
-
+// Récupération de toutes les catégories avec le nombre de livres associés pour affichage
 $categories = $pdo->query("
     SELECT categories.*, COUNT(livres.id) AS nb
     FROM categories
@@ -46,7 +46,7 @@ $categories = $pdo->query("
     GROUP BY categories.id
     ORDER BY categories.nom
 ")->fetchAll();
-
+// Si on est en train de modifier une catégorie, on récupère ses données pour pré-remplir le formulaire
 $modifier = null;
 if (isset($_GET['modifier'])) {
     $s = $pdo->prepare("SELECT * FROM categories WHERE id = ?");

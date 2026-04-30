@@ -5,7 +5,7 @@ require_once '../config/db.php';
 // Stockage des messages d'erreur ou de reussite
 $msg = '';
 $err = '';
-
+// Traitement de la suppression d'un livre
 if (isset($_GET['supprimer'])) {
     $id = intval($_GET['supprimer']);
     $row = $pdo->prepare("SELECT couverture FROM livres WHERE id = ?");
@@ -17,7 +17,7 @@ if (isset($_GET['supprimer'])) {
     $pdo->prepare("DELETE FROM livres WHERE id = ?")->execute([$id]);
     $msg = "Livre supprimé.";
 }
-
+// traitement de l'ajout ou de la modification d'un livre
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['action'] == 'ajouter') {
     $titre  = trim($_POST['titre']);
     $auteur = trim($_POST['auteur']);
@@ -65,10 +65,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['action'] == 'modifier') {
     $upd->execute([$titre, $auteur, $desc, $prix, $cat ?: null, $couverture, $id]);
     $msg = "Livre modifié.";
 }
-
+// Récupération de tous les livres avec leur catégorie pour affichage
 $livres = $pdo->query("SELECT livres.*, categories.nom AS cat FROM livres LEFT JOIN categories ON livres.id_categorie = categories.id ORDER BY livres.titre")->fetchAll();
 $categories = $pdo->query("SELECT * FROM categories")->fetchAll();
-
+// Si on est en train de modifier un livre, on récupère ses données pour pré-remplir le formulaire
 $modifier = null;
 if (isset($_GET['modifier'])) {
     $s = $pdo->prepare("SELECT * FROM livres WHERE id = ?");
