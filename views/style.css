@@ -15,7 +15,7 @@
 * {
     box-sizing: border-box;
 }
-
+/* Styles globaux pour le corps de la page, incluant une image de fond fixe et une typographie claire */
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
@@ -27,7 +27,7 @@ body {
     display: flex;
     flex-direction: column;
 }
-
+/* Styles pour le header principal, incluant un effet de flou et une ombre pour le rendre plus distinctif */
 .main-header {
     position: sticky;
     top: 0;
@@ -76,7 +76,7 @@ body {
     color: white !important;
     text-decoration: none;
 }
-
+/* Styles pour la section héroïque de la page d'accueil, avec une typographie élégante et un centrage du contenu */
 .hero-title {
     text-align: center;
     padding: 60px 0 20px 0;
@@ -103,7 +103,7 @@ body {
     margin-bottom: 30px;
     color: white;
 }
-
+/* Styles pour la page de connexion, avec une carte centrée et un design épuré pour les formulaires */
 .login-card {
     background-color: var(--beige-footer);
     color: var(--texte-sombre);
@@ -128,7 +128,7 @@ body {
     width: 100%;
     max-width: 280px;
 }
-
+/* Styles pour les formulaires de connexion et d'inscription, avec des champs arrondis et une mise en page verticale pour une meilleure lisibilité */
 .form-container {
     flex: 1.5;
 }
@@ -151,7 +151,7 @@ body {
     border: 1px solid #ccc;
     border-radius: 25px;
 }
-
+/* Styles pour les boutons d'action sur les différentes pages, avec des couleurs vives et des formes arrondies pour une meilleure expérience utilisateur */
 .actions {
     display: flex;
     flex-direction: column;
@@ -174,7 +174,7 @@ body {
     color: var(--bleu-header);
     text-decoration: underline;
 }
-
+/* Styles pour les cartes de livres sur la page d'accueil et les pages de catégories, avec une mise en page en grille et des éléments visuels pour les avis et les prix */
 .cards-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
@@ -205,7 +205,7 @@ body {
     flex-direction: column;
     justify-content: space-between;
 }
-
+/* Styles pour les badges d'avis et de catégories, avec des couleurs de fond distinctives et des formes arrondies pour les différencier visuellement */
 .badge-avis {
     display: inline-block;
     background: var(--beige-footer);
@@ -222,7 +222,7 @@ body {
     text-decoration: none;
     text-align: center;
 }
-
+/* Styles pour la section d'historique de la page d'accueil, avec une mise en page centrée et une typographie claire pour les descriptions */
 .history-section {
     background-color: var(--beige-footer);
     color: var(--bleu-header);
@@ -233,7 +233,7 @@ body {
     box-shadow: 0 15px 40px rgba(0,0,0,0.4);
     line-height: 1.6;
 }
-
+/* Styles pour le footer, avec une mise en page en grille pour les différentes sections et des éléments visuels pour les liens et les informations de contact */
 .main-footer {
     background-color: var(--beige-footer);
     color: var(--texte-sombre);
@@ -413,7 +413,7 @@ body {
     border-bottom: 2px solid rgba(27, 73, 101, 0.1);
     padding-bottom: 10px;
 }
-
+/* Styles pour la section de critiques sur la page de détails du livre, avec une mise en page claire pour les formulaires de soumission et les avis existants */
 .reviews {
     background: var(--beige-footer);
     color: var(--texte-sombre);
@@ -523,7 +523,7 @@ hr {
 .logo-image {
     height: 40px;
 }
-
+/* Style pour la navgation du header admin*/
 .navigation-admin ul {
     display: flex;
     list-style: none;
@@ -543,7 +543,7 @@ hr {
 .navigation-admin a:hover {
     opacity: 1;
 }
-
+/* Styles pour les cartes de statistiques sur le tableau de bord de l'administration, avec une mise en page en grille et des éléments visuels pour les chiffres clés */
 .card-admin {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -572,7 +572,7 @@ hr {
     letter-spacing: 1px;
     font-weight: bold;
 }
-
+/* Styles pour les actions d'administration sur les différentes pages, avec des boutons colorés et une mise en page en grille pour une meilleure organisation */
 .admin-actions {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -602,7 +602,7 @@ hr {
     border: 2px solid var(--bleu-header);
     color: white;
 }
-
+/* Styles pour les tableaux d'administration, avec une mise en page claire et des éléments visuels pour les en-têtes et les lignes */
 .admin-table {
     width: 100%;
     border-collapse: collapse;
@@ -628,7 +628,7 @@ hr {
 .admin-table tr:hover {
     background-color: #f9f9f9;
 }
-
+/* Styles pour les conteneurs généraux sur les pages d'administration, avec une largeur maximale et un centrage pour une meilleure lisibilité */
 .container {
     max-width: 1100px;
     margin: 0 auto;
@@ -646,7 +646,7 @@ hr {
     border: none;
     transition: 0.3s;
 }
-
+/* Styles pour les boutons d'action sur les pages d'administration, avec des couleurs distinctives pour les différentes actions (ajouter, modifier, supprimer) */
 .btn-bleu { background: #1b4965; color: white; }
 .btn-vert { background: #27ae60; color: white; }
 .btn-rouge { background: #e74c3c; color: white; }
@@ -693,7 +693,7 @@ tr:hover { background: rgba(27, 73, 101, 0.05); }
     color: #1b4965;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
-
+/* Styles pour les en-têtes de cartes sur les pages d'administration, avec une mise en page flexible pour les titres et les actions associées */
 .admin-card-header {
     display: flex;
     justify-content: space-between;
@@ -708,6 +708,7 @@ tr:hover { background: rgba(27, 73, 101, 0.05); }
     margin: 40px 0 20px 0;
     text-align: center;
 }
+/* Styles pour les sections de formulaires sur les pages d'administration, avec une mise en page claire et des éléments visuels pour les champs et les étiquettes */
 .admin-form-section {
     background: var(--beige-footer);
     padding: 25px;
@@ -754,7 +755,7 @@ tr:hover { background: rgba(27, 73, 101, 0.05); }
     text-decoration: underline;
     transform: translateX(-5px);
 }
-
+/* Styles pour les titres de sections sur les pages d'administration, avec un fond distinctif et une typographie claire pour les différencier visuellement */
 .admin-page-categorieh2 {
     background: var(--beige-footer);
     padding: 25px;
@@ -786,7 +787,7 @@ form.admin-page-categorieh2 div {
     display: flex;
     gap: 10px;
 }
-
+/* Styles pour les messages de succès et d'erreur sur les pages d'administration, avec des couleurs distinctives et une mise en page claire pour attirer l'attention de l'utilisateur */
 .succes {
     background-color: #d4edda;
     color: #155724;
